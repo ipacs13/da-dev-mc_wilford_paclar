@@ -32,7 +32,7 @@ class TodoRepository extends BaseRepository  implements TodoRepositoryInterface
         return $this->model->create($data);
     }
 
-    public function update(int $id, array $data): bool
+    public function updateTodo(int $id, array $data): bool
     {
         return $this->update($id, $data);
     }

@@ -53,7 +53,7 @@ class TodoController extends Controller
     public function update(Request $request, $id): JsonResponse
     {
         $validation = $this->validateRequest($request, [
-            'description' => 'required',
+            'completed' => 'required|boolean',
         ]);
 
         if (!$validation->validated) {
@@ -63,9 +63,9 @@ class TodoController extends Controller
                 $validation->message,
             );
         }
+        $validation->data['completed'] = (int) $validation->data['completed'];
 
-        $todo = $this->todoRepository->update($id, $validation->data);
-
+        $todo = $this->todoRepository->updateTodo($id, $validation->data);
         if (!$todo) {
             return $this->sendResponse(
                 'error',

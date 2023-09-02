@@ -13,7 +13,7 @@ interface TodoRepositoryInterface
 
     public function create(array $data): Todo;
 
-    public function update(int $id, array $data): bool;
+    public function updateTodo(int $id, array $data): bool;
 
     public function delete($id): bool;
 }
